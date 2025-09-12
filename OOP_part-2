@@ -1,0 +1,115 @@
+# 1) Encapsulation Example (BankAccount class with private balance)
+class BankAccount:
+    def __init__(self, balance=0):
+        self.__balance = balance   # private variable
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print("Deposited:", amount, "New Balance:", self.__balance)
+        else:
+            print("Invalid deposit amount")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            print("Withdrew:", amount, "Remaining Balance:", self.__balance)
+        else:
+            print("Not enough balance")
+
+    def get_balance(self):
+        return self.__balance
+
+
+# 2) Inheritance Example (SavingsAccount extends BankAccount)
+class SavingsAccount(BankAccount):
+    def __init__(self, balance=0, interest_rate=0.05):
+        super().__init__(balance)
+        self.interest_rate = interest_rate
+
+    def add_interest(self):
+        interest = self.get_balance() * self.interest_rate
+        self.deposit(interest)
+        print("Interest Added:", interest)
+
+
+# 3) Method Resolution Order (MRO)
+class A:
+    pass
+
+class B:
+    pass
+
+class C(A, B):
+    pass
+
+print("MRO of C:", C.mro())
+
+
+# 4) Polymorphism Example
+class Cat:
+    def speak(self):
+        return "Meow"
+
+class Dog:
+    def speak(self):
+        return "Woof"
+
+def make_speak(animal):
+    print(animal.speak())
+
+make_speak(Cat())
+make_speak(Dog())
+
+
+# 5) Employee Class
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
+
+    def display_salary(self):
+        print("Salary:", self.salary)
+
+
+# 6) Manager Class (Inheritance + super method)
+class Manager(Employee):
+    def __init__(self, salary, bonus):
+        super().__init__(salary)
+        self.bonus = bonus
+
+    def display_salary(self):
+        super().display_salary()
+        print("Bonus:", self.bonus)
+        print("Total Salary:", self.salary + self.bonus)
+
+
+# 7) Operator Overloading (__eq__ method)
+class EmployeeWithEq(Employee):
+    def __eq__(self, other):
+        return self.salary == other.salary
+
+
+# 8) Logger Class used as decorator
+class Logger:
+    def __init__(self, func):
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
+        print("Calling function:", self.func.__name__)
+        return self.func(*args, **kwargs)
+
+class SampleClass:
+    @Logger
+    def greet(self):
+        print("Hello from SampleClass!")
+
+
+# 9) Dynamic attribute creation using setattr
+emp = Employee(40000)
+setattr(emp, "department", "HR")
+print("Employee Department:", emp.department)
+
+
+# 10) isinstance() and issubclass() demo
+print("Is emp an Employee?", isinstance(emp, Employee))
+print("Is Manager subclass of Employee?", issubclass(Manager, Employee))
