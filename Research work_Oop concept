@@ -1,0 +1,22 @@
+Research Work – Advanced OOP Concepte 
+Q1: What is encapsulation, and how does using private attributes prevent misuse? 
+Encapsulation means keeping data safe inside a class and only changing it through 
+methods. If we use private attributes like __balance, then no one can directly change them 
+from outside, so the data stays secure. 
+Q2: Explain the concept of method resolution order (MRO) in multiple inheritance with an 
+example? 
+MRO is the order Python follows to check methods when we use multiple inheritance. For 
+example, if we make class C(A, B), then Python will first check in C, then in A, then in B, and 
+at last in object. Q3: How does polymorphism facilitate flexible function design across 
+different classes? 
+Polymorphism lets us use the same function for different classes For example, a function 
+make_speak() can work for Dog and Cat It will call Dog’s speak method and Cat’s speak 
+method without us writing two separate functions 
+Q4: What are the benefits of utilizing super() in inheritance for code maintainability? 
+The super() function helps us call the parent class easily It saves us from repeating the 
+same code again and again If we update the parent class the changes also apply to the 
+child classes automatically 
+Q5: How does operator overloading improve readability? Provide a real-world example in 
+code.Operator overloading makes the code look simple and natural For example if two 
+employees have the same salary we can just write e1 == e2 instead of making a separate 
+function It looks cleaner and is easier to understand
